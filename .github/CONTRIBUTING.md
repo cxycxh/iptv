@@ -32,18 +32,19 @@ http://example.com/stream.m3u8
 But of course, the more channel information you add, the better. Here's an example of what a full version of a link in a playlist might look like:
 
 ```xml
-#EXTINF:-1 tvg-id="exampletv.us" tvg-name="Example TV" tvg-logo="http://example.com/channel-logo.png" group-title="News",Example TV
+#EXTINF:-1 tvg-id="exampletv.us" tvg-name="Example TV" tvg-language="English" tvg-logo="http://example.com/channel-logo.png" group-title="News",Example TV
 http://example.com/stream.m3u8
 ```
 
 More details about each attribute:
 
-| Attribute   | Description
-| ----------- | ---
-| tvg-id      | Channel ID that is used to load EPG (optional)
-| tvg-name    | Channel name that is also sometimes used to load EPG (optional)
-| tvg-logo    | The logo of the channel that will be displayed in the player if it supports it (optional)
-| group-title | The category to which the channel belongs. These categories are also displayed in some players, and grouped playlists are also generated based on them. The list of currently supported categories can be found below (optional)
+| Attribute    | Description
+| ------------ | ---
+| tvg-id       | Channel ID that is used to load EPG. Must match `id` from the EPG file. (optional)
+| tvg-name     | Channel name that is also sometimes used to load EPG. Must match `display-name` from the EPG file. (optional)
+| tvg-language | Channel language. The name of the language must conform to the standard [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (optional)
+| tvg-logo     | The logo of the channel that will be displayed in the player if it supports it (optional)
+| group-title  | The category to which the channel belongs. These categories are also displayed in some players, and grouped playlists are also generated based on them. The list of currently supported categories can be found [here](https://github.com/iptv-org/iptv#playlists-by-category) (optional)
 
 
 ## Sort channels by category
@@ -79,9 +80,9 @@ If it turns out that the broadcast still does not start, this means that it can 
 
 It would also be nice if you indicated in the description of the PR the reason for the removal of the channel, so that other members of the community could also double-check the channel for their part.
 
-It is also possible to automatically find broken broadcasts. To do this, you first need to install [Node.js](https://nodejs.org/en/) on your computer.
+It is also possible to automatically find broken broadcasts. To do this, you first need to install [Node.js](https://nodejs.org/en/) and [ffmpeg](https://www.ffmpeg.org) on your computer.
 
-Copy this repository to your computer. Then open it in the console line and install all the dependencies from it by running this command:
+After that copy this repository to your computer, open it in the console and install all the dependencies from it by running this command:
 
 ```sh
 npm install
